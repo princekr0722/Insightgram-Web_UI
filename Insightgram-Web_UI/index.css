@@ -1,0 +1,269 @@
+/* DEFAULT */
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+.no_margin_padding {
+    margin: 0px;
+    padding: 0px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+select>option:first-child {
+    color: #999 !important;
+}
+
+.background {
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden; */
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+#footer_alert {
+    background-color: rgba(255, 255, 255, 0.286);
+    border: 1px solid;
+
+    z-index: 100;
+    height: 40px;
+    width: max-content;
+    max-width: 300px;
+    overflow: hidden;
+    border-radius: 3px;
+    
+    position: fixed;
+    bottom: -100px;
+    right: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 15px;
+
+    color: #737373;
+    font-weight: 600;
+    
+    margin: 10px 0px;
+    padding: 5px 15px;
+
+    backdrop-filter: blur(7px);
+    transition: bottom 0.4s;
+
+    transition: transform 0.4s;
+}
+#footer_alert_symbol {
+    height: 90%;
+    width: 30px;
+    object-fit: fill;
+}
+
+
+/* LOADING SCREEN */
+
+#Insightgram_loading_logo {
+    animation: fadeIn ease 0.5s;
+    width: 1000px;
+    transition: ease-in-out 1s;
+}
+
+/* FORM */
+
+.form,
+.form_bottom_opt {
+    width: 350px;
+    height: max-content;
+    font-size: 14px;
+    border: 1px solid rgb(219, 219, 219);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0px;
+    border-radius: 2px;
+}
+
+.form>div:first-child {
+    /* height: 80px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form img {
+    width: 174px;
+    margin: 15px 0px;
+}
+
+.form label {
+    color: #737373;
+}
+
+.form input:not([type="submit"]),
+.form select {
+    width: 260px;
+    font-size: 14px;
+    background-color: #FAFAFA;
+    border-radius: 2px;
+    border: 1px solid rgb(219, 219, 219);
+    margin: 5px 0px;
+    padding: 9px 0px 7px 8px;
+}
+
+.form input:not([type="submit"]):focus::placeholder {
+    position: absolute;
+    top: 0px;
+    left: 8px;
+    font-size: 10px;
+    color: #999;
+    transition: top 0.2s ease-in-out, font-size 0.2s ease;
+}
+
+.form select,
+.form select:focus {
+    /* color: #999; */
+    width: 270px !important;
+}
+
+.form input::placeholder {
+    font-size: 13px;
+}
+
+.form input[type="submit"],
+.form input[type="button"] {
+    height: 32px;
+    width: 270px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 0px;
+    background-color: #4cb5f9;
+    margin-top: 15px;
+}
+
+.form input[type="button"] {
+    background: white !important;
+    border: none;
+    color: #4cb5f9 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    margin-top: 8px;
+}
+
+.form_bottom_opt {
+    margin-top: 12px;
+    flex-direction: row !important;
+    gap: 5px;
+}
+
+.form_bottom_opt span:last-child {
+    color: #4cb5f9;
+    font-weight: 600;
+}
+
+.form form {
+    text-align: center;
+}
+
+.form a {
+    text-decoration: none;
+    color: #00376b;
+}
+
+.form_heading_message1 {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 10px 0px;
+}
+
+.form_heading_message2 {
+    width: 75%;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 10px 0px;
+    color: #737373;
+}
+
+.form hr {
+    height: 2px;
+    background-color: #c0c0c0;
+    border: none;
+    margin: 10px 0px;
+}
+
+.form_info_text {
+    display: inline-block;
+    font-size: 12px;
+    color: #737373;
+    width: 80%;
+    margin: 5px 0px;
+}
+
+.form_skip_sec {
+    display: flex !important;
+    justify-content: right !important;
+    align-items: end;
+}
+
+.form_skip_btn,
+.form_skip_btn:focus {
+    background-color: white;
+    border: none;
+    color: #737373;
+}
+
+
+/* SIGNUP FORM */
+
+#signup_TC_message {
+    width: 75%;
+    font-size: 12px;
+    display: inline-block;
+    margin: 10px 0px;
+}
+
+/* DOB SEC */
+
+#birthday_cake_logo {
+    width: 90px;
+    margin: 2px 0px;
+    transform: rotate(-8deg);
+}
+
+#dob {
+    color: rgb(115, 115, 115);
+    text-align: center;
+}
+
+
+/* PERSONAL INFO */
+
+#personal_info_logo, #account_privacy_logo {
+    width: 80px;
+}
