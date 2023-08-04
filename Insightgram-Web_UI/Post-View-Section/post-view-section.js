@@ -427,7 +427,6 @@ async function loadNewPage() {
     let distanceToBottom = commentSecRect.bottom - commentsContainerRect.bottom;
 
     if (distanceToBottom >= 5 || pageNumber == 1) {
-        // console.log(distanceToBottom, pageNumber)
         commentsSec.removeEventListener("scroll", loadNewPage);
         await loadComments();
     }

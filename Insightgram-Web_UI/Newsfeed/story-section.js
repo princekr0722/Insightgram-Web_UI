@@ -31,7 +31,6 @@ async function startStoryViewSection(storyBasicInfo, usersWhoHaveStory, forced =
     storiesContainer = storiesSec.querySelector("#stories");
     userStoryIcons = storiesSec.querySelectorAll(".story");
 
-    // console.log(storyBasicInfo)
     let seletedUserId = storyBasicInfo.userId;
 
     // currentStoryCarouselIndex = storyBasicInfo.storyIndex;
@@ -46,7 +45,6 @@ async function startStoryViewSection(storyBasicInfo, usersWhoHaveStory, forced =
     scrollPosition = -currentStoryCarouselIndex * 100;
 
     if (forced || isStoryCarouselLoaded == false) {
-        console.log(usersWhoHaveStory)
         storyCarouselsContainer.innerHTML = null;
         await createAllStoryCarousels(usersWhoHaveStory);
 
@@ -171,7 +169,6 @@ async function createStoryCarousel(userStories, userBasicInfo) {
     }
 
     let newStoryCarousel = await insertStoryCarouselInContainer(storyCarouselHTML);
-    // console.log(userStories, userBasicInfo)
     putStoryContentsInStoryCarouselHTML();
     logicOfStoryCarousel(newStoryCarousel);
 
@@ -255,7 +252,6 @@ function scrollStoryCarouselContainerLeft() {
     previousStoryCarouselIndex = currentStoryCarouselIndex;
     currentStoryCarouselIndex--;
     startCurrentStoryCarousel();
-    // console.log((storyCarouselsWrapper.length-1) * 100, scrollPosition)
 }
 function scrollStoryCarouselContainerRight() {
     if (currentStoryCarouselIndex >= storyCarouselsWrapper.length - 1) {
@@ -273,7 +269,6 @@ function scrollStoryCarouselContainerRight() {
     previousStoryCarouselIndex = currentStoryCarouselIndex;
     currentStoryCarouselIndex++;
     startCurrentStoryCarousel();
-    // console.log((storyCarouselsWrapper.length-1) * 100, scrollPosition)
 }
 function storyCarouselContainerArrowsVisiblityLogic() {
     let lastStory = storyContainer.lastElementChild;
@@ -403,7 +398,6 @@ function logicOfStoryCarousel(storyCarousel) {
         if (currentStoryIndex < storyContents.length - 1) {
             previousStoryIndex = currentStoryIndex;
             currentStoryIndex++;
-            console.log(currentStoryIndex)
         } else {
             storyContainer.scroll(storyContainer.scrollHeight, storyContainer.scrollHeight);
         }
@@ -654,7 +648,6 @@ function logicOfStoryCarousel(storyCarousel) {
         if (storyCarousel.classList.contains("current")) {
             if (document.hidden == false) {
                 arrowsVisiblityLogic();
-                // console.log("Not Hidden")
             } else {
 
             }
@@ -693,19 +686,17 @@ swipeElement.addEventListener('touchend', (event) => {
 
 function closeStorySectionOnBackBtnClick() {
 
-    let newState = { action: 'storySectionOpen' };
+    // let newState = { action: 'storySectionOpen' };
 
-    window.history.pushState(newState, '', '');
+    // window.history.pushState(newState, '', '');
 
-    window.addEventListener("popstate", (event) => {
-        // Check if the state contains the information about the recent action
-        // console.log(event)
-        if (event.state && event.state.action === 'storySectionOpen') {
-            // Undo the recent action here
-            // For example, revert the changes made during the recent action
-            // Or show a message to the user that they can undo the action
-            hideStoryViewSection();
-            // history.back();
-        }
-    });
+    // window.addEventListener("popstate", (event) => {
+    //     if (event.state && event.state.action === 'storySectionOpen') {
+    //         // Undo the recent action here
+    //         // For example, revert the changes made during the recent action
+    //         // Or show a message to the user that they can undo the action
+    //         hideStoryViewSection();
+    //         // history.back();
+    //     }
+    // });
 }

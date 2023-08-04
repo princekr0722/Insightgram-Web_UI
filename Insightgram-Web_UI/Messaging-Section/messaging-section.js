@@ -352,7 +352,6 @@ function addMessageInputFieldLogic() {
 
     let previousKeyPress = null;
     messageInputField.addEventListener("keydown", async (event) => {
-        console.log(previousKeyPress === 'Control' && event.key === 'Enter')
         if (event.shiftKey && event.key === 'Enter') {
 
         } else if (previousKeyPress === 'Control' && event.key === 'Enter') {

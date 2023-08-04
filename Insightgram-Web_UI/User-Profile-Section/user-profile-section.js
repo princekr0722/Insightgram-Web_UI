@@ -360,10 +360,8 @@ function showOverlayChangeDpWindow() {
                 changeEveryDpInPage(newDpURL);
                 closeUploadProfileWindow();
             } else {
-                console.log("any error???")
             }
         } else {
-            console.log("any error???")
             uploadDpField.removeEventListener("change", uploadDp);
             uploadDpField.addEventListener("change", uploadDp);
         }

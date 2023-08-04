@@ -185,7 +185,6 @@ async function connectToMessaging(username, messageAccessToken, onMessageReceive
     }
     function onError(error) {
         showFooterAlert(error);
-        console.error(error);
     }
 
     return stompClient;
@@ -437,7 +436,6 @@ async function getOtherCommentsOfPost(postId, pageSize = 20, pageNumber = 1, sor
         let pageOfComments = await response.json();
         return pageOfComments;
     } catch (error) {
-        console.log(error)
         showFooterAlert(error);
     }
     return null;
@@ -996,7 +994,6 @@ async function getNewsfeedPosts(pageNumber = 1, pageSize = 10) {
     return [];
 }
 function showFooterAlert(message = "Something went wrong, Please try again", isError = true, image = "/Insightgram-Web_UI/Images/error.png") {
-    // console.log(message)
     let border = "1px solid rgb(131, 131, 255)";
     let backgroundColor = "rgba(0, 0, 200, 0.050)";
 
@@ -1007,7 +1004,7 @@ function showFooterAlert(message = "Something went wrong, Please try again", isE
         image = "/Insightgram-Web_UI/Images/check-mark.png";
     }
     let footerAlert = `
-        <div id='footer_alert'>
+        <div id='footer_alert' class="${isMobile()?"for-mobile":""}">
             <div style='margin: 0px; padding: 0px;'>
                 <img src='${image}' alt='' id='footer_alert_symbol'>
             </div>

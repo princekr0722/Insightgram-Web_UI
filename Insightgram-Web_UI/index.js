@@ -33,7 +33,6 @@ setTimeout(async () => {
     if (jwtToken) {
         try {
             let validToken = await isTokenValid(jwtToken);
-            console.log(validToken)
             if (validToken) {
                 gotoNewsFeed();
             }

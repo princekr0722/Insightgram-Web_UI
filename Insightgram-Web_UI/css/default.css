@@ -25,6 +25,9 @@ html, body { height: 100vh; }
     -webkit-tap-highlight-color: transparent;
 }
 
+#footer_alert.for-mobile {
+    bottom: -200px;
+}
 #footer_alert {
     background-color: rgba(255, 255, 255, 0.286);
     border: 1px solid;

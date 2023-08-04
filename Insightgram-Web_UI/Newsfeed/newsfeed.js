@@ -1275,7 +1275,6 @@ async function showNewStoryInStorySec(storyDto) {
 
     if (!storiesContainer.firstElementChild || storiesContainer.firstElementChild.dataset.userid != currentUserDetails.userId) {
         storiesContainer = storiesSec.querySelector("#stories");
-        console.log("Creating new story user icon")
         let userBasicInfo = {
             username: currentUserDetails.username,
             profilePhoto: currentUserDetails.profilePhoto,

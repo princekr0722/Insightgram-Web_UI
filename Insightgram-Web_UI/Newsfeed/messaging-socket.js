@@ -18,15 +18,12 @@ async function connectToMessagingWS(onMessage = (payload) => { }) {
         return stompClient;
     } catch (error) {
         showFooterAlert(error);
-        console.log(error)
     }
 }
 
 function onMessage(payload) {
-    console.log(payload)
     var message = JSON.parse(payload.body);
-
-    console.log(message);
+    alert(message)
 }
 
 export {
