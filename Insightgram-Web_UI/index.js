@@ -8,7 +8,9 @@ import {
 } from "./src/api_endpoints.js";
 
 import {
-    showFooterAlert
+    showFooterAlert,
+    isTokenValid,
+
 } from "./src/util.js"
 
 let today = new Date();
@@ -26,23 +28,34 @@ let normal = "rgb(219, 219, 219)";
 setTimeout(() => {
     InsightgramLoadingLogo.style.width = "200px";
 }, 50);
-setTimeout(() => {
-    let isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn")) || false;
-
-    if (isLoggedIn) {
-        gotoNewsFeed();
+setTimeout(async () => {
+    let jwtToken = JSON.parse(localStorage.getItem("insightgramAuthenticationToken"));
+    if (jwtToken) {
+        try {
+            let validToken = await isTokenValid(jwtToken);
+            console.log(validToken)
+            if (validToken) {
+                gotoNewsFeed();
+            }
+            else {
+                showLoginForm();
+                showFooterAlert("Session expired, Please log in again", true, "./Images/error.png");
+            }
+        } catch (error) {
+            if (error == "TypeError: Failed to fetch") {
+                error = "Could not connect to server..."
+            }
+            showLoginForm();
+            showFooterAlert(error, true, "./Images/error.png");
+        }
     } else {
         showLoginForm();
-        // showSignupForm();
-        // showDobForm();
-        // showPerfonalDetailsForm();
-        // showAccountPrivacyForm();
     }
 
 }, 1200);
 
 function gotoNewsFeed() {
-    window.location.href = "Newsfeed/newsfeed.html";
+    window.location.href = "/Insightgram-Web_UI/Newsfeed/newsfeed.html";
 }
 
 function showLoginForm() {
@@ -126,28 +139,31 @@ async function logIn(usernameAndPassword) {
 
     try {
         let response = await fetch(baseUrl + logInEP, {
-            method : "GET",
-            headers : headers
+            method: "GET",
+            headers: headers
         });
-        
-        if(response.status>=200 && response.status<=299) {
+
+        if (response.status >= 200 && response.status <= 299) {
             let insightgramAuthenticationToken = response.headers.get('Authorization');
+            let insightgramMessagingToken = response.headers.get("MessageingToken");
+
             localStorage.setItem("insightgramAuthenticationToken", JSON.stringify(insightgramAuthenticationToken));
-           
-            let insightgramUserDetails = await response.json(); 
+            localStorage.setItem("insightgramMessagingToken", JSON.stringify(insightgramMessagingToken))
+
+            let insightgramUserDetails = await response.json();
             localStorage.setItem("insightgramUserDetails", JSON.stringify(insightgramUserDetails));
-    
+
             localStorage.setItem("isLoggedIn", JSON.stringify(true));
-    
+
             gotoNewsFeed();
-        } else if(response.status==401) {
-            showFooterAlert("Wrong Credentials!")
+        } else if (response.status == 401) {
+            showFooterAlert("Wrong Credentials!", true, "./Images/error.png")
         }
-    } catch(error) {
-        if(error=="TypeError: Failed to fetch") {
-            showFooterAlert("Could not connect to server, Please try again later")
+    } catch (error) {
+        if (error == "TypeError: Failed to fetch") {
+            showFooterAlert("Could not connect to server, Please try again later", true, "./Images/error.png")
         } else {
-            alert(error); 
+            alert(error);
         }
     }
 }
@@ -247,7 +263,7 @@ async function isNumberAvailable(mob) {
         }
 
     } catch (error) {
-        showFooterAlert("Something went wrong, please try again")
+        showFooterAlert("Something went wrong, please try again", true, "./Images/error.png")
         return false;
     }
 }
@@ -265,7 +281,7 @@ async function isUsernameAvailable(username) {
             return isAvailable;
         }
     } catch (error) {
-        showFooterAlert("Something went wrong, please try again")
+        showFooterAlert("Something went wrong, please try again", true, "./Images/error.png")
         return false;
     }
 }
@@ -499,11 +515,11 @@ async function createNewUser(userCreationForm) {
     })
 
     if (!(promise.status >= 200 && promise.status <= 299)) {
-        showFooterAlert("Something went wrong, please try again")
+        showFooterAlert("Something went wrong, please try again", true, "./Images/error.png")
         showLoginForm();
     } else {
         let response = await promise.text();
-        showFooterAlert(response, false);
+        showFooterAlert(response, false, "./Images/check-mark.png");
         localStorage.removeItem("userCreationForm");
         showLoginForm();
     }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insightgram Search Section</title>
+    <link rel="stylesheet" href="/Insightgram-Web_UI//Search-Section/search-section.css">
+    <link rel="stylesheet" href="/Insightgram-Web_UI/css/default.css">
+</head>
+
+<body>
+    <div id="search-container">
+        <div id="search-container-head">
+            <div>Search</div>
+            <div id="close-search-sec-btn">
+                <svg viewBox="0 0 30 30"><path xmlns="http://www.w3.org/2000/svg" d="M17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41L17.59 5Z"></path></svg>
+            </div>
+        </div>
+        <div id="search-bar">
+            <input type="text" placeholder="Search">
+        </div>
+        <div id="search-history-sec">
+            <!-- <div id="search-history-sec-head">
+                <span>Recent</span>
+                <span id="search-history-clear-all-btn" class="clickable">Clear all</span>
+            </div> -->
+            <div id="search-history-container">
+                <!-- SEARCH USER CARD -->
+                <div id="search-result-container">
+                    
+                </div>
+                <!-- <span style="display: none;" id="no-search-history">No recent searches.</span> -->
+                <span style="display: none;" id="no-search-results">No result found.</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="module" src="/Insightgram-Web_UI//Search-Section/search-section.js"></script>

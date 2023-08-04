@@ -4,19 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insightgram feed</title>
-    <link rel="icon" href="../favicon_io/favicon.ico" type="image/x-icon">
+    <title>Insightgram</title>
 
+    <link rel="icon" href="/Insightgram-Web_UI/favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/Insightgram-Web_UI/css/default.css">
+    <link rel="stylesheet" href="/Insightgram-Web_UI/Newsfeed/story-section.css">
     <link rel="stylesheet" href="newsfeed.css">
 </head>
 
 <body class="newsfeed">
+    <div id="overlay-screen" style="display: none; color: white;">
+        <!-- FOLLOW AND FOLLOWERS -->
+    </div>
     <div id="newsfeed_opt_sec">
         <div id="insightgram_logo_sec">
             <img class="clickable" src="../Images/Black_Insightgram-Logo-Transparent.png" alt="">
         </div>
         <div id="newsfeed_options">
-            <div class="clickable hover_zoom_icon">
+            <div id="newsfeed-home-btn" class="clickable hover_zoom_icon">
                 <svg aria-label="Home" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img"
                     viewBox="0 0 24 24" width="24">
                     <path
@@ -25,7 +30,7 @@
                 </svg>
                 <span>Home</span>
             </div>
-            <div class="clickable hover_zoom_icon">
+            <div id="newsfeed-search-sec-btn" class="clickable hover_zoom_icon">
                 <svg aria-label="Search" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img"
                     viewBox="0 0 24 24" width="24">
                     <path d="M19 10.5A8.5 8.5 0 1 1 10.5 2a8.5 8.5 0 0 1 8.5 8.5Z" fill="none" stroke="currentColor"
@@ -35,7 +40,7 @@
                 </svg>
                 <span>Search</span>
             </div>
-            <div class="clickable hover_zoom_icon">
+            <div class="clickable hover_zoom_icon unimplemented">
                 <svg aria-label="Reels" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img"
                     viewBox="0 0 24 24" width="24">
                     <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="2.049"
@@ -54,19 +59,22 @@
                 </svg>
                 <span>Reels</span>
             </div>
-            <div class="clickable hover_zoom_icon">
-                <svg aria-label="Messenger" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24"
-                    role="img" viewBox="0 0 24 24" width="24">
-                    <path
-                        d="M12.003 2.001a9.705 9.705 0 1 1 0 19.4 10.876 10.876 0 0 1-2.895-.384.798.798 0 0 0-.533.04l-1.984.876a.801.801 0 0 1-1.123-.708l-.054-1.78a.806.806 0 0 0-.27-.569 9.49 9.49 0 0 1-3.14-7.175 9.65 9.65 0 0 1 10-9.7Z"
-                        fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.739"></path>
-                    <path
-                        d="M17.79 10.132a.659.659 0 0 0-.962-.873l-2.556 2.05a.63.63 0 0 1-.758.002L11.06 9.47a1.576 1.576 0 0 0-2.277.42l-2.567 3.98a.659.659 0 0 0 .961.875l2.556-2.049a.63.63 0 0 1 .759-.002l2.452 1.84a1.576 1.576 0 0 0 2.278-.42Z"
-                        fill-rule="evenodd"></path>
-                </svg>
+            <div id="newsfeed-messenger-btn" class="clickable hover_zoom_icon">
+                <div style="position: relative;">
+                    <svg aria-label="Messenger" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24"
+                        role="img" viewBox="0 0 24 24" width="24">
+                        <path
+                            d="M12.003 2.001a9.705 9.705 0 1 1 0 19.4 10.876 10.876 0 0 1-2.895-.384.798.798 0 0 0-.533.04l-1.984.876a.801.801 0 0 1-1.123-.708l-.054-1.78a.806.806 0 0 0-.27-.569 9.49 9.49 0 0 1-3.14-7.175 9.65 9.65 0 0 1 10-9.7Z"
+                            fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.739"></path>
+                        <path
+                            d="M17.79 10.132a.659.659 0 0 0-.962-.873l-2.556 2.05a.63.63 0 0 1-.758.002L11.06 9.47a1.576 1.576 0 0 0-2.277.42l-2.567 3.98a.659.659 0 0 0 .961.875l2.556-2.049a.63.63 0 0 1 .759-.002l2.452 1.84a1.576 1.576 0 0 0 2.278-.42Z"
+                            fill-rule="evenodd"></path>
+                    </svg>
+                    <div class="red-dot"></div>
+                </div>
                 <span>Messages</span>
             </div>
-            <div class="clickable hover_zoom_icon">
+            <div class="clickable hover_zoom_icon unimplemented">
                 <svg aria-label="Notifications" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24"
                     role="img" viewBox="0 0 24 24" width="24">
                     <path
@@ -75,7 +83,7 @@
                 </svg>
                 <span>Notifications</span>
             </div>
-            <div class="clickable hover_zoom_icon">
+            <div id="createNewPostBtn" data-userid="" class="clickable hover_zoom_icon">
                 <svg aria-label="New post" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img"
                     viewBox="0 0 24 24" width="24">
                     <path
@@ -89,10 +97,11 @@
                 </svg>
                 <span>Create</span>
             </div>
-            <div class="clickable hover_zoom_icon">
+            <div id="my-profile-sec-btn" class="clickable hover_zoom_icon">
                 <img class="current user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
                 <span>Profile</span>
             </div>
+
         </div>
         <div id="more_opts" class="clickable hover_zoom_icon">
             <svg aria-label="Settings" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img"
@@ -105,117 +114,50 @@
                     x1="3" x2="21" y1="20" y2="20"></line>
             </svg>
             <span>More</span>
+            <div class="more-opts-list">
+                <div id="log-out-btn">Log Out</div>
+            </div>
+        </div>
+        <div id="newsfeed_options-slide-window" class="hide">
+
+            <!-- <iframe src="/Insightgram-Web_UI/Search-Section/search-section.html" width="100%" height="100%" frameborder="0"></iframe> -->
+
         </div>
     </div>
-    <div id="newsfeed_content_sec">
+    <div id="newsfeed_content_sec" style="display: grid;">
 
         <div id="content_sec">
 
             <div id="stories_sec">
 
                 <div id="stories">
-                    <div class="story" data-id="">
+                    <!-- <div class="story" data-userid="">
                         <div class="dp_story">
                             <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
                         </div>
                         <div><span class="username_plain">username</span></div>
                     </div>
-                    <div class="story" data-id="">
+
+                    <div class="story" data-userid="">
                         <div class="dp_story">
                             <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
                         </div>
                         <div><span class="username_plain">username</span></div>
                     </div>
-                    <div class="story" data-id="">
+
+                    <div class="story" data-userid="">
                         <div class="dp_story">
                             <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
                         </div>
                         <div><span class="username_plain">username</span></div>
                     </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
-                    <div class="story" data-id="">
-                        <div class="dp_story">
-                            <img class="user_profile_photo" src="../Images/no_profile_photo.jpg" alt="">
-                        </div>
-                        <div><span class="username_plain">username</span></div>
-                    </div>
+                    -->
                 </div>
 
-                <div class="slide-arrow slide-left clickable">
+                <div class="slide-arrow slide-left clickable" style="display: none;">
                     <img src="../Images/arrow-right.png" alt="">
                 </div>
-                <div class="slide-arrow slide-right clickable">
+                <div class="slide-arrow slide-right clickable" style="display: none;">
                     <img src="../Images/arrow-right.png" alt="">
                 </div>
             </div>
@@ -223,262 +165,6 @@
 
             <div id="posts_sec">
 
-                <div class="post">
-                    <div class="post-head">
-                        <div>
-                            <div>
-                                <img class="user_profile_photo clickable" src="../Images/no_profile_photo.jpg" alt="">
-                            </div>
-                            <div>
-                                <span class="username clickable">chrishemsworth
-                                </span>
-                                <span class="dot">•</span>
-                                <span class="gray">15h</span>
-                            </div>
-                        </div>
-
-                        <div class="clickable">
-                            <svg aria-label="More options" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)"
-                                height="24" role="img" viewBox="0 0 24 24" width="24">
-                                <circle cx="12" cy="12" r="1.5"></circle>
-                                <circle cx="6" cy="12" r="1.5"></circle>
-                                <circle cx="18" cy="12" r="1.5"></circle>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="post-carousel">
-
-                        <div class="post-content-container">
-                            <div class="post-content post-content-img">
-                                <img src="../Images/example post image(2).jpeg" alt="">
-                            </div>
-
-                            <div class="post-content post-content-video">
-                                <video loop muted playsinline autoplay>
-                                    <source
-                                        src="../Videos/Snapinsta.app_video_336198786_580076604065542_2975597009584832537_n.mp4"
-                                        type="video/mp4">
-                                    <source src="movie.ogg" type="video/ogg">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <div class="video-volume-toggle">
-                                    <img src="../Images/volume-mute.png" alt="">
-                                </div>
-                            </div>
-
-                            <div class="post-content post-content-img">
-                                <img src="../Images/example post image.jpeg" alt="">
-                            </div>
-
-                            <div class="post-content post-content-img">
-                                <img src="../Images/example post image(3).jpg" alt="">
-                            </div>
-
-                        </div>
-
-                        <div class="slide-arrow slide-left clickable">
-                            <img src="../Images/arrow-right.png" alt="">
-                        </div>
-                        <div class="slide-arrow slide-right clickable">
-                            <img src="../Images/arrow-right.png" alt="">
-                        </div>
-                    </div>
-                    <div class="post-action">
-                        <div>
-                            <span class="post-like-btn">
-                                <svg aria-label="Like" class="x1lliihq x1n2onr6" 
-                                    height="24" role="img" viewBox="0 0 24 24" width="24">
-                                    <title>Like</title>
-                                    <path
-                                        d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z">
-                                    </path>
-                                </svg>
-                            </span>
-                            <span class="post-comment-btn">
-                                <svg aria-label="Comment" class="x1lliihq x1n2onr6" color="rgb(0,0,0)"
-                                    fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24">
-                                    <title>Comment</title>
-                                    <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none"
-                                        stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-                                </svg>
-                            </span>
-                            <span class="post-share-btn">
-                                <svg aria-label="Share Post" class="x1lliihq x1n2onr6" color="rgb(0,0,0)"
-                                    fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24">
-                                    <title>Share Post</title>
-                                    <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"
-                                        x1="22" x2="9.218" y1="3" y2="10.083"></line>
-                                    <polygon fill="none"
-                                        points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
-                                        stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon>
-                                </svg>
-                            </span>
-                        </div>
-                        <div>
-                            <span class="post-save-btn">
-                                <svg aria-label="Save" class="x1lliihq x1n2onr6" color="rgb(0,0,0)" fill="rgb(0,0,0)"
-                                    height="24" role="img" viewBox="0 0 24 24" width="24">
-                                    <title>Save</title>
-                                    <polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></polygon>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="post-likecount">100 likes</div>
-
-                    <div class="post-caption">
-                        <pre class="caption"><span class="username">chrishemsworth</span> Big thanks to @entertainmentweekly for the chat on this beautiful sunny day 😂
-
-Directed by: @alison_wild + @kiwiharding
-
-Still Photography: @dennisleupold
-
-Writer: @devancoggan
-
-Stylist: @samanthamcmillen_stylist
-
-Grooming: @lucyhalperin
-                        </pre>
-                        <span class="caption-toggle-btn clickable">more</span>
-                    </div>
-                    <div class="post-comment">
-                        <span class="post-comment-count clickable">View all <span>2148</span> comments</span>
-                        <input class="post-comment-add" type="text" placeholder="Add a comment...">
-                    </div>
-                </div>
-
-                <!-- <div class="post">
-                    <div class="post-head">
-                        <div>
-                            <div>
-                                <img class="user_profile_photo clickable" src="../Images/no_profile_photo.jpg" alt="">
-                            </div>
-                            <div>
-                                <span class="username clickable">chrishemsworth
-                                </span>
-                                <span class="dot">•</span>
-                                <span class="gray">15h</span>
-                            </div>
-                        </div>
-
-                        <div class="clickable">
-                            <svg aria-label="More options" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)"
-                                height="24" role="img" viewBox="0 0 24 24" width="24">
-                                <circle cx="12" cy="12" r="1.5"></circle>
-                                <circle cx="6" cy="12" r="1.5"></circle>
-                                <circle cx="18" cy="12" r="1.5"></circle>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="post-carousel">
-
-                        <div class="post-content-container">
-
-                            <div class="post-content post-content-video">
-                                <video loop muted playsinline autoplay>
-                                    <source
-                                        src="../Videos/Snapinsta.app_video_336198786_580076604065542_2975597009584832537_n.mp4"
-                                        type="video/mp4">
-                                    <source src="movie.ogg" type="video/ogg">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                            
-                            <div class="post-content post-content-img">
-                                <img src="../Images/example post image(2).jpeg" alt="">
-                            </div>
-
-                            <div class="post-content post-content-img">
-                                <img src="../Images/example post image.jpeg" alt="">
-                            </div>
-
-
-                        </div>
-
-                        <div class="slide-arrow slide-left clickable">
-                            <img src="../Images/arrow-right.png" alt="">
-                        </div>
-                        <div class="slide-arrow slide-right clickable">
-                            <img src="../Images/arrow-right.png" alt="">
-                        </div>
-                    </div>
-                    <div class="post-action">
-                        <div>
-                            <span class="post-like-btn">
-                                <svg aria-label="Like" class="x1lliihq x1n2onr6" color="rgb(0,0,0)" fill="rgb(0, 0, 0)"
-                                    height="24" role="img" viewBox="0 0 24 24" width="24">
-                                    <title>Like</title>
-                                    <path
-                                        d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z">
-                                    </path>
-                                </svg>
-                            </span>
-                            <span class="post-comment-btn">
-                                <svg aria-label="Comment" class="x1lliihq x1n2onr6" color="rgb(0,0,0)"
-                                    fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24">
-                                    <title>Comment</title>
-                                    <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none"
-                                        stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-                                </svg>
-                            </span>
-                            <span class="post-share-btn">
-                                <svg aria-label="Share Post" class="x1lliihq x1n2onr6" color="rgb(0,0,0)"
-                                    fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24">
-                                    <title>Share Post</title>
-                                    <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"
-                                        x1="22" x2="9.218" y1="3" y2="10.083"></line>
-                                    <polygon fill="none"
-                                        points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
-                                        stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon>
-                                </svg>
-                            </span>
-                        </div>
-                        <div>
-                            <span class="post-save-btn">
-                                <svg aria-label="Save" class="x1lliihq x1n2onr6" color="rgb(0,0,0)" fill="rgb(0,0,0)"
-                                    height="24" role="img" viewBox="0 0 24 24" width="24">
-                                    <title>Save</title>
-                                    <polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21"
-                                        stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"></polygon>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="post-likecount">100 likes</div>
-
-                    <div class="post-caption">
-                        <pre class="caption"><span class="username">chrishemsworth</span> Big thanks to @entertainmentweekly for the chat on this beautiful sunny day 😂
-
-Directed by: @alison_wild + @kiwiharding
-
-Still Photography: @dennisleupold
-
-Writer: @devancoggan
-
-Stylist: @samanthamcmillen_stylist
-
-Grooming: @lucyhalperin
-                        </pre>
-                        <span class="caption-toggle-btn clickable">more</span>
-                    </div>
-                    <div class="post-comment">
-                        <span class="post-comment-count clickable">View all <span>2148</span> comments</span>
-                        <input class="post-comment-add" type="text" placeholder="Add a comment...">
-                    </div>
-                </div> -->
-
-            </div>
-            <div id="posts_sec_end">
-                <div>
-                    <img src="../Images/seen_all_posts_check.png" alt="">
-                </div>
-                <div>You're all caught up</div>
-                <div>
-                    You've seen all new posts from the past 2 days.
-                </div>
             </div>
         </div>
         <div id="profile_and_suggestions_sec">
@@ -502,7 +188,7 @@ Grooming: @lucyhalperin
             </div>
 
             <!-- PEOPLE SUGGESTIONS -->
-            <div id="account_suggetions">
+            <div id="account_suggetions" class="unimplemented">
                 <div class="recommended_user">
                     <div class="dp_and_names">
                         <div>
@@ -520,7 +206,132 @@ Grooming: @lucyhalperin
         </div>
 
     </div>
+
+    <div id="story-view-section">
+
+        <div id="story-carousels-container-wrapper">
+            <div id="story-carousels-container">
+                <!-- <div class="story-carousel-dimensions">
+                    <div class="story-carousel">
+                        <div class="story-cover">
+                            <div class="story-of-user">
+                                <div class="gradiant-ring on">
+                                    <img class="user_profile_photo" src="/Insightgram-Web_UI/Images/no_profile_photo.jpg" alt="">
+                                </div>
+                                <div class="username">username</div>
+                                <div class="time">21h</div>
+                            </div>
+                        </div>
+                        <div class="story-carousel-header">
+        
+                            <div class="story-bars">
+                                <div class="story-bar">
+                                    <div class="progress-bar"></div>
+                                </div>
+                                <div class="story-bar">
+                                    <div class="progress-bar"></div>
+                                </div>
+                                <div class="story-bar">
+                                    <div class="progress-bar"></div>
+                                </div>
+                                <div class="story-bar">
+                                    <div class="progress-bar"></div>
+                                </div>
+                            </div>
+        
+                            <div class="user-info-n-control">
+        
+                                <div class="user-info">
+                                    <div class="user-dp">
+                                        <img class="user_profile_photo" src="/Insightgram-Web_UI/Images/no_profile_photo.jpg"
+                                            alt="">
+                                    </div>
+                                    <div class="username">username</div>
+                                    <div class="time">21h</div>
+                                </div>
+        
+                                <div class="story-control">
+                                    <div class="story-mute-unmute clickable">
+                                        <svg style="display: none;" class="unmuted-icon" aria-label="Audio is playing"
+                                            color="rgb(255, 255, 255)" fill="rgb(255, 255, 255)" height="16" role="img"
+                                            viewBox="0 0 24 24" width="16">
+                                            <title>Audio is playing</title>
+                                            <path
+                                                d="M16.636 7.028a1.5 1.5 0 1 0-2.395 1.807 5.365 5.365 0 0 1 1.103 3.17 5.378 5.378 0 0 1-1.105 3.176 1.5 1.5 0 1 0 2.395 1.806 8.396 8.396 0 0 0 1.71-4.981 8.39 8.39 0 0 0-1.708-4.978Zm3.73-2.332A1.5 1.5 0 1 0 18.04 6.59 8.823 8.823 0 0 1 20 12.007a8.798 8.798 0 0 1-1.96 5.415 1.5 1.5 0 0 0 2.326 1.894 11.672 11.672 0 0 0 2.635-7.31 11.682 11.682 0 0 0-2.635-7.31Zm-8.963-3.613a1.001 1.001 0 0 0-1.082.187L5.265 6H2a1 1 0 0 0-1 1v10.003a1 1 0 0 0 1 1h3.265l5.01 4.682.02.021a1 1 0 0 0 1.704-.814L12.005 2a1 1 0 0 0-.602-.917Z">
+                                            </path>
+                                        </svg>
+                                        <svg style="display: none;" class="muted-icon" aria-label="Audo is muted."
+                                            color="rgb(255, 255, 255)" fill="rgb(255, 255, 255)" height="16" role="img"
+                                            viewBox="0 0 48 48" width="16">
+                                            <title>Audo is muted.</title>
+                                            <path clip-rule="evenodd"
+                                                d="M1.5 13.3c-.8 0-1.5.7-1.5 1.5v18.4c0 .8.7 1.5 1.5 1.5h8.7l12.9 12.9c.9.9 2.5.3 2.5-1v-9.8c0-.4-.2-.8-.4-1.1l-22-22c-.3-.3-.7-.4-1.1-.4h-.6zm46.8 31.4-5.5-5.5C44.9 36.6 48 31.4 48 24c0-11.4-7.2-17.4-7.2-17.4-.6-.6-1.6-.6-2.2 0L37.2 8c-.6.6-.6 1.6 0 2.2 0 0 5.7 5 5.7 13.8 0 5.4-2.1 9.3-3.8 11.6L35.5 32c1.1-1.7 2.3-4.4 2.3-8 0-6.8-4.1-10.3-4.1-10.3-.6-.6-1.6-.6-2.2 0l-1.4 1.4c-.6.6-.6 1.6 0 2.2 0 0 2.6 2 2.6 6.7 0 1.8-.4 3.2-.9 4.3L25.5 22V1.4c0-1.3-1.6-1.9-2.5-1L13.5 10 3.3-.3c-.6-.6-1.5-.6-2.1 0L-.2 1.1c-.6.6-.6 1.5 0 2.1L4 7.6l26.8 26.8 13.9 13.9c.6.6 1.5.6 2.1 0l1.4-1.4c.7-.6.7-1.6.1-2.2z"
+                                                fill-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="story-more-opts clickable">
+                                        <svg aria-label="Menu" class="x1lliihq x1n2onr6" color="rgb(255, 255, 255)"
+                                            fill="rgb(255, 255, 255)" height="24" role="img" viewBox="0 0 24 24" width="24">
+                                            <title>Menu</title>
+                                            <circle cx="12" cy="12" r="2.75"></circle>
+                                            <circle cx="19.5" cy="12" r="2.75"></circle>
+                                            <circle cx="4.5" cy="12" r="2.75"></circle>
+                                        </svg>
+                                    </div>
+        
+                                </div>
+        
+                            </div>
+        
+                        </div>
+                        <div class="loading-story">
+                            <img src="/Insightgram-Web_UI/Images/loading_animation.gif" alt="">
+                        </div>
+                        <div class="story-container">
+                            <div class="story-content">
+                                <video muted
+                                    src="/Insightgram-Web_UI/Videos/Snapinsta.app_video_336198786_580076604065542_2975597009584832537_n.mp4"></video>
+                            </div>
+                            <div class="story-content">
+                                <img src="/Insightgram-Web_UI//Images/example post image(2).jpeg" alt="">
+                            </div>
+                            <div class="story-content">
+                                <img src="/Insightgram-Web_UI//Images/example post image(3).jpg" alt="">
+                            </div>
+                            <div class="story-content">
+                                <img src="/Insightgram-Web_UI//Images/example post image.jpeg" alt="">
+                            </div>
+                        </div>
+        
+                        <div class="slide-arrow slide-left clickable" style="display: none;">
+                            <img src="../Images/arrow-right.png" alt="">
+                        </div>
+                        <div class="slide-arrow slide-right clickable" style="display: none;">
+                            <img src="../Images/arrow-right.png" alt="">
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- <div id="story-scroll-bag">hello</div> -->
+
+        <div class="slide-arrow slide-left clickable" style="display: flex;">
+            <img src="../Images/arrow-big.png" alt="">
+        </div>
+        <div class="slide-arrow slide-right clickable" style="display: flex;">
+            <img src="../Images/arrow-big.png" alt="">
+        </div>
+
+    </div>
+    <div id="content-screen" style="display: none;">
+
+    </div>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 
 </html>
 <script type="module" src="newsfeed.js"></script>
+<script type="module" src="story-section.js"></script>
+<script type="module" src="messaging-socket.js"></script>

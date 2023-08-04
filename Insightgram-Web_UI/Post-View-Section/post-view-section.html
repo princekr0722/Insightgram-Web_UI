@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <link rel="stylesheet" href="/Insightgram-Web_UI/css/default.css">
+    <link rel="stylesheet" href="/Insightgram-Web_UI/Post-View-Section/post-view-section.css">
+</head>
+
+<body>
+    <div id="close-window" class="clickable">
+        <svg class="close_btn_svg" viewBox="0 0 24 24">
+            <path xmlns="http://www.w3.org/2000/svg"
+                d="M17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41L17.59 5Z">
+            </path>
+        </svg>
+    </div>
+    <div id="main-post-container">
+        <div class="media-sec">
+            <div class="post-carousel">
+
+                <div class="post-content-container">
+                    <div class="post-content post-content-img default">
+                        <img src="../Images/default_thumbnail.png" alt="">
+                    </div>
+                </div>
+
+                <div class="slide-arrow  slide-left clickable">
+                    <img src="../Images/arrow-right.png" alt="">
+                </div>
+                <div class="slide-arrow slide-right clickable">
+                    <img src="../Images/arrow-right.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="info-sec">
+            <div class="head">
+                <div>
+                    <div>
+                        <img class="user_profile_photo clickable" data-userid="" src="../Images/no_profile_photo.jpg"
+                            alt="">
+                    </div>
+                    <div>
+                        <span class="username clickable" data-userid="">...</span>
+                    </div>
+                </div>
+
+                <div class="more-opts-btn clickable" style="display: none;">
+                    <svg class="open" aria-label="More options" class="_ab6-" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)"
+                        height="24" role="img" viewBox="0 0 24 24" width="24">
+                        <circle cx="12" cy="12" r="1.5"></circle>
+                        <circle cx="6" cy="12" r="1.5"></circle>
+                        <circle cx="18" cy="12" r="1.5"></circle>
+                    </svg>
+                    <svg class="close_btn_svg" style="display: none;" viewBox="0 0 24 24">
+                        <path xmlns="http://www.w3.org/2000/svg"
+                            d="M17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41L17.59 5Z">
+                        </path>
+                    </svg>
+                </div>
+                <div id="more-opts-list" style="display: none;">
+                    <div id="edit-post-btn">Edit</div>
+                    <div id="dlt-post-btn">Delete</div>
+                </div>
+            </div>
+            <div class="comments">
+
+                <div class="post-caption-sec">
+                    <div class="post-caption">
+                        <div>
+                            <img class="user_profile_photo clickable" data-userid=""
+                                src="/Insightgram-Web_UI/Images/no_profile_photo.jpg" alt="">
+                        </div>
+                        <span class="username clickable" data-userid="">...</span>
+                        <pre contenteditable="false" class="caption expand edit">...</pre>
+
+                    </div>
+                    <div id="caption-edit" style="display: none;">
+                        <span id="cancle-caption-edit-btn">Cancle</span>
+                        <span id="save-new-caption-btn">Save</span>
+                    </div>
+                </div>
+
+                <div id="public-comments-container">
+
+                </div>
+            </div>
+            <div class="actions">
+                <div>
+                    <span class="post-like-btn">
+                        <svg aria-label="Like" class="x1lliihq x1n2onr6" height="24" role="img" viewBox="0 0 24 24"
+                            width="24">
+                            <title>Like</title>
+                            <path
+                                d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z">
+                            </path>
+                        </svg>
+                    </span>
+                    <span class="post-comment-btn">
+                        <svg aria-label="Comment" class="x1lliihq x1n2onr6" color="rgb(0,0,0)" fill="rgb(0, 0, 0)"
+                            height="24" role="img" viewBox="0 0 24 24" width="24">
+                            <title>Comment</title>
+                            <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none"
+                                stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                    </span>
+                    <span class="post-share-btn">
+                        <svg class="unimplemented" aria-label="Share Post" class="x1lliihq x1n2onr6" color="rgb(0,0,0)"
+                            fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24">
+                            <title>Share Post</title>
+                            <line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22"
+                                x2="9.218" y1="3" y2="10.083"></line>
+                            <polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"
+                                stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon>
+                        </svg>
+                    </span>
+                </div>
+                <div>
+                    <span class="post-save-btn unimplemented">
+                        <svg aria-label="Save" class="x1lliihq x1n2onr6" color="rgb(0,0,0)" fill="rgb(0,0,0)"
+                            height="24" role="img" viewBox="0 0 24 24" width="24">
+                            <title>Save</title>
+                            <polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="likes">
+                <span>0</span>
+                <pre> </pre>
+                <span class="clickable"> likes</span>
+            </div>
+            <div class="time">
+                <span class="gray">25 DEC 2020</span>
+            </div>
+            <div class="comment-field">
+                <!-- <span class="post-comment-count clickable">View all <span>2148</span> comments</span> -->
+                <input class="post-comment-input" type="text" placeholder="Add a comment..." maxlength="500">
+                <div class="comment-post-btn" style="display: none;">Post</div>
+            </div>
+        </div>
+    </div>
+    <div id="overlay-screen" style="display: none;">
+        <!-- <div id="likes-container">
+            <div class="head">
+                <div>Likes</div>
+                <div>
+                    <svg class="close_btn_svg" viewBox="0 0 24 24">
+                        <path xmlns="http://www.w3.org/2000/svg"
+                            d="M17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41L17.59 5Z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+            <div class="body">
+                <div class="liker-card">
+                    <div>
+                        <div>
+                            <img class="user_profile_photo" src="/Insightgram-Web_UI/Images/no_profile_photo.jpg" alt="Profile Photo">
+                        </div>
+                        <div>
+                            <div class="username">Username</div>
+                            <div class="fullname">Full Name</div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="follow">Follow</button>
+                        <button class="unfollow">Unfollow</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</body>
+
+</html>
+<script type="module" src="/Insightgram-Web_UI/Post-View-Section/post-view-section.js"></script>
