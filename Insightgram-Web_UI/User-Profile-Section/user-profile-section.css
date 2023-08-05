@@ -733,7 +733,7 @@ a:hover {
     font-weight: 400 !important;
 }
 
-@media (max-width:900px) {
+@media (max-width:550px) {
     #current-user-profile .more-options .more-opts-list {
         top: 60px;
         left: -20px;
@@ -745,12 +745,25 @@ a:hover {
 
     #user-details-container {
         height: max-content;
-        grid-template-columns: 30% 1fr;
+
+        display: flex;
+        flex-direction: column;
         column-gap: 5px;
+        width: 100%;
+    }
+
+    #current-user-profile,
+    #other-user-profile {
+        /* width: 200px; */
+        /* display: flex; */
+        /* flex-wrap: wrap; */
+        justify-content: space-around;
+        width: 100%;
     }
 
     #user-other-details {
         max-height: max-content !important;
+        /* width: max-content; */
     }
 
     #user-dp {
@@ -767,6 +780,7 @@ a:hover {
     #counters {
         width: 100%;
         gap: 10px;
+        justify-content: space-around;
     }
     #counters>div {
         display: flex;
