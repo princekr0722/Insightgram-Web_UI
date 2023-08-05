@@ -28,6 +28,7 @@ import {
     deletePostEP,
     editPostCaptionEP,
     getUserBasicInfoByUsernameEP,
+    createPostEP,
 
     postStoryEP,
     getUsersWhoHaveStoryEP,
@@ -801,7 +802,7 @@ async function createPost(files, postType, caption, jwtToken = "") {
         formData.append('postType', postType);
         formData.append('caption', caption);
 
-        const response = await fetch(baseUrl + '/post', {
+        const response = await fetch(baseUrl + createPostEP, {
             method: 'POST',
             headers: {
                 "Authorization": "Bearer " + jwtToken,

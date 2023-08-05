@@ -1,45 +1,49 @@
 let baseUrl = "http://localhost:8088";
 let baseMessagingUrl = "http://localhost:8089";
 
+// let baseUrl = "http://localhost:8080";
+// let baseMessagingUrl = baseUrl;
+
 // MAIN APP
-let logInEP = "/signIn";
-let signUpEP = "/signUp";
-let signOutEP = "/signOut";
-let userNameAvailiblity = "/username/check/";
-let mobileNumberAvailiblity = "/mobileNumber/check/";
-let viewUserProfilePhotoEP = "/user/?/profilePhoto"
-let tokenValidityCheckEp = "/token/check";
-let newsfeedPostsEP = "/newsFeed/posts";
-let postContentEP = "/post/content/?";
-let haveUserLikedAlready = "/post/?/isLiked";
-let likePostEP = "/post/?/like";
-let unlikePostEP = "/post/?/unlike"
-let commentOnPostEP = "/post/?";
-let searchUserEP = "/users/search/";
-let myProfileEP = "/myProfile";
-let userProfileEP = "/user/?/profile";
-let userPostsEP = "/user/?/posts";
-let isFollowerCheckEP = "/user/?/isfollower/check";
-let userFollowEP = "/user/?/follow";
-let userUnfollowEP = "/user/?/unfollow";
-let editPersonalInfoEP = "/user/personalInfo";
-let editProfileInfoEP = "/user/profileInfo";
-let addProfilePhotoEP = "/user/profilePhoto";
-let changeProfilePhotoEP = "/user/profilePhoto";
-let deleteProfilePhotoEP = "/user/profilePhoto";
-let logOutUserEP = "/signOut";
-let otherCommentsOfPostEP = "/post/?/comments";
-let deleteCommentEP = "/post/?1/comment/?2";
-let likePageEP = "/post/:postId/likes?pageSize=:pageSize&pageNumber=:pageNumber";
-let deletePostEP = "/user/post/?";
-let editPostCaptionEP = "/user/post/:postId?caption=:caption";
-let getUserBasicInfoByUsernameEP = "/user/:username/info";
-let postStoryEP = "/story";
-let deleteStoryByIdEP = "/story/:storyId";
-let viewStoryByIdEP = "/story/:storyId";
-let getStoriesOfUserEP = "/user/:userId/stories";
-let seeStoryViewsEP = "/story/:storyId/views?pageSize=:pageSize&pageNumber=:pageNumber";
-let getUsersWhoHaveStoryEP = "/following/stories";
+let logInEP = "/main-app/signIn";
+let signUpEP = "/main-app/signUp";
+let signOutEP = "/main-app/signOut";
+let userNameAvailiblity = "/main-app/username/check/";
+let mobileNumberAvailiblity = "/main-app/mobileNumber/check/";
+let viewUserProfilePhotoEP = "/main-app/user/?/profilePhoto"
+let tokenValidityCheckEp = "/main-app/token/check";
+let newsfeedPostsEP = "/main-app/newsFeed/posts";
+let createPostEP = "/main-app/post";
+let postContentEP = "/main-app/post/content/?";
+let haveUserLikedAlready = "/main-app/post/?/isLiked";
+let likePostEP = "/main-app/post/?/like";
+let unlikePostEP = "/main-app/post/?/unlike"
+let commentOnPostEP = "/main-app/post/?";
+let searchUserEP = "/main-app/users/search/";
+let myProfileEP = "/main-app/myProfile";
+let userProfileEP = "/main-app/user/?/profile";
+let userPostsEP = "/main-app/user/?/posts";
+let isFollowerCheckEP = "/main-app/user/?/isfollower/check";
+let userFollowEP = "/main-app/user/?/follow";
+let userUnfollowEP = "/main-app/user/?/unfollow";
+let editPersonalInfoEP = "/main-app/user/personalInfo";
+let editProfileInfoEP = "/main-app/user/profileInfo";
+let addProfilePhotoEP = "/main-app/user/profilePhoto";
+let changeProfilePhotoEP = "/main-app/user/profilePhoto";
+let deleteProfilePhotoEP = "/main-app/user/profilePhoto";
+let logOutUserEP = "/main-app/signOut";
+let otherCommentsOfPostEP = "/main-app/post/?/comments";
+let deleteCommentEP = "/main-app/post/?1/comment/?2";
+let likePageEP = "/main-app/post/:postId/likes?pageSize=:pageSize&pageNumber=:pageNumber";
+let deletePostEP = "/main-app/user/post/?";
+let editPostCaptionEP = "/main-app/user/post/:postId?caption=:caption";
+let getUserBasicInfoByUsernameEP = "/main-app/user/:username/info";
+let postStoryEP = "/main-app/story";
+let deleteStoryByIdEP = "/main-app/story/:storyId";
+let viewStoryByIdEP = "/main-app/story/:storyId";
+let getStoriesOfUserEP = "/main-app/user/:userId/stories";
+let seeStoryViewsEP = "/main-app/story/:storyId/views?pageSize=:pageSize&pageNumber=:pageNumber";
+let getUsersWhoHaveStoryEP = "/main-app/following/stories";
 
 // MESSAGING APP
 let getConverationsEP = "/chat-app/message/conversations";
@@ -88,6 +92,7 @@ export {
     getStoriesOfUserEP,
     seeStoryViewsEP,
     getUsersWhoHaveStoryEP,
+    createPostEP,
 
 
     baseMessagingUrl,
