@@ -656,6 +656,7 @@ function scrollPostCarouselLeft(leftArrow) {
         behavior: "smooth"
     })
 }
+let currentMediaPlaying;
 function playVideoIfOnScreen(videoElement) {
 
     videoElement.addEventListener("click", () => {
@@ -677,6 +678,7 @@ function playVideoIfOnScreen(videoElement) {
         } else {
             if (isElementInViewport(videoElement)) {
                 videoElement.play();
+                currentMediaPlaying = videoElement;
             }
         }
     });
@@ -694,12 +696,14 @@ function playVideo(videoElement) {
     if (muteAudio) {
         videoElement.muted = true;
         videoElement.play();
+        currentMediaPlaying = videoElement;
         audioIcons.forEach((videoIcon) => {
             videoIcon.setAttribute("src", "../Images/volume-mute.png");
         })
     } else {
         videoElement.muted = false;
         videoElement.play();
+        currentMediaPlaying = videoElement;
         audioIcons.forEach((videoIcon) => {
             videoIcon.setAttribute("src", "../Images/volume-up-interface-symbol.png");
         })
@@ -887,6 +891,7 @@ function showContentScreen(innerHTML) {
     newsfeedContentSec.style.display = "none";
     contentScreen.style.display = "block";
     contentScreen.innerHTML = innerHTML;
+    if(currentMediaPlaying) currentMediaPlaying.pause();
 }
 function hideContentScreen() {
     contentScreen.style.display = "none";
