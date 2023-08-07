@@ -1,8 +1,11 @@
-let baseUrl = "http://localhost:8088";
-let baseMessagingUrl = "http://localhost:8089";
+// let baseUrl = "http://localhost:8088";
+// let baseMessagingUrl = "http://localhost:8089";
 
 // let baseUrl = "http://localhost:8080";
-// let baseMessagingUrl = baseUrl;
+// let baseMessagingUrl = "http://localhost:8089";
+
+let baseUrl = "https://insightgrammainbackendservice-production.up.railway.app";
+let baseMessagingUrl = "https://insightgrammessagingservice-production.up.railway.app";
 
 // MAIN APP
 let logInEP = "/main-app/signIn";
