@@ -35,7 +35,7 @@ Access `http://localhost:PORT_NUMBER/swagger-ui/index.html#/` to explore the API
 - `JavaScript`, `HTML`, and `CSS`: The driving force behind our dynamic and visually appealing user interface, delivering a seamless and interactive experience.
 - `Netlify`: Empowering our deployment strategy with effortless continuous integration and hosting, ensuring a swift and efficient user experience.
 
-With these technologies, Insightgram is equipped to provide you with a secure, engaging, and user-friendly platform that reflects our commitment to excellence.
+With these technologies, Insightgram Web UI is equipped to provide you with a secure, engaging, and user-friendly platform that reflects our commitment to excellence.
 
 ## Duration
 
