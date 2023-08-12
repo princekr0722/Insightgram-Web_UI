@@ -54,7 +54,7 @@ setTimeout(async () => {
 }, 1200);
 
 function gotoNewsFeed() {
-    window.location.href = "/Insightgram-Web_UI/Newsfeed/newsfeed.html";
+    window.location.href = "Newsfeed/newsfeed.html";
 }
 
 function showLoginForm() {

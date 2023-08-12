@@ -142,7 +142,7 @@ async function createStoryCarousel(userStories, userBasicInfo) {
             </div>
 
             <div class="loading-story">
-                <img src="/Insightgram-Web_UI/Images/loading_animation.gif" alt="">
+                <img src="../Images/loading_animation.gif" alt="">
             </div>
 
             <div class="story-container">

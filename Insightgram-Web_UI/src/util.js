@@ -227,8 +227,7 @@ async function viewStoryById(storyId, jwtToken) {
             throwCustomErrorMessage(await response.text());
         }
 
-        let blob = await response.blob();
-        let storyContentUrl = URL.createObjectURL(blob);
+        let storyContentUrl = await response.text();
         return storyContentUrl;
     } catch (error) {
         showFooterAlert(error);
@@ -487,7 +486,7 @@ async function addUserDp(dp, jwtToken) {
             throwCustomErrorMessage(await response.text());
         }
 
-        let newProfilePhotoUrl = URL.createObjectURL(await response.blob());
+        let newProfilePhotoUrl = await response.text();
         showFooterAlert("Added profile photo", false)
         return newProfilePhotoUrl;
     } catch (error) {
@@ -540,7 +539,7 @@ async function changeUserDp(dp, jwtToken = "") {
             throwCustomErrorMessage(await response.text());
         }
 
-        let newProfilePhotoUrl = URL.createObjectURL(await response.blob());
+        let newProfilePhotoUrl = await response.text();
         showFooterAlert("Changed profile photo", false)
         return newProfilePhotoUrl;
     } catch (error) {
@@ -961,8 +960,7 @@ async function getPostContentUrl(contentId, jwtToken) {
             throw new Error(response.status + " " + response.statusText);
         }
 
-        let blob = await response.blob();
-        let contentUrl = URL.createObjectURL(blob);
+        let contentUrl = await response.text();
 
         return contentUrl;
     } catch (error) {
@@ -994,15 +992,16 @@ async function getNewsfeedPosts(pageNumber = 1, pageSize = 10) {
     }
     return [];
 }
-function showFooterAlert(message = "Something went wrong, Please try again", isError = true, image = "/Insightgram-Web_UI/Images/error.png") {
+function showFooterAlert(message = "Something went wrong, Please try again", isError = true, image) {
     let border = "1px solid rgb(131, 131, 255)";
     let backgroundColor = "rgba(0, 0, 200, 0.050)";
 
     if (isError) {
         border = "1px solid rgb(255, 131, 131)";
         backgroundColor = "rgba(255, 0, 0, 0.050)";
+        if(!image) image = "../Images/error.png";
     } else {
-        image = "/Insightgram-Web_UI/Images/check-mark.png";
+        if(!image) image = "../Images/check-mark.png";
     }
     let footerAlert = `
         <div id='footer_alert' class="${isMobile()?"for-mobile":""}">
@@ -1043,10 +1042,9 @@ async function getUserProfilePhoto(userId, jwtToken) {
         });
 
         if (!response.ok) {
-            imageUrl = "/Insightgram-Web_UI/Images/no_profile_photo.jpg";
+            imageUrl = "../Images/no_profile_photo.jpg";
         } else {
-            let blob = await response.blob();
-            imageUrl = URL.createObjectURL(blob);
+            imageUrl = await response.text();;
         }
 
     } catch (error) {

@@ -27,7 +27,7 @@ import { startStoryViewSection } from "./story-section.js";
 let jwtToken = JSON.parse(localStorage.getItem("insightgramAuthenticationToken")) || "null";
 let messageingToken = JSON.parse(localStorage.getItem("insightgramMessagingToken")) || "null";
 let stompClient = null;
-
+let currentMediaPlaying;
 // OVERLAY SCREEN SETTINGS
 
 let overlayScreen = document.querySelector("#overlay-screen");
@@ -54,7 +54,7 @@ window.addEventListener('message', function (event) {
         } else {
             showMyNewPostInNewsfeed(event.data[1]);
         }
-        showFooterAlert("Posted", false, "/Insightgram-Web_UI/Images/check-mark.png")
+        showFooterAlert("Posted", false, "../Images/check-mark.png")
     } else if (message == "gotoProfileOf") {
         gotoProfileOf(event.data[1]);
     } else if (message == "removeOverlayScreen") {
@@ -90,7 +90,7 @@ window.addEventListener('message', function (event) {
         if (!isLoggedIn) {
             showFooterAlert("Session expired, please log in again");
 
-            window.location.href = "/Insightgram-Web_UI/index.html";
+            window.location.href = "../index.html";
         }
     } catch (error) {
         if (error == "TypeError: Failed to fetch") {
@@ -98,7 +98,7 @@ window.addEventListener('message', function (event) {
         }
 
         showFooterAlert(error)
-        window.location.href = "/Insightgram-Web_UI/index.html";
+        window.location.href = "../index.html";
     }
 }
 
@@ -132,7 +132,7 @@ try {
         if (currentUserDetails.profilePhoto != null) {
             profilePhotoUrl = await getUserProfilePhoto(currentUserDetails.userId, jwtToken);
         } else {
-            profilePhotoUrl = "/Insightgram-Web_UI/Images/no_profile_photo.jpg";
+            profilePhotoUrl = "../Images/no_profile_photo.jpg";
         }
 
         currentUserProfilePhotos.forEach(p => {
@@ -171,7 +171,7 @@ try {
     localStorage.removeItem("insightgramUserDetails");
 
     setTimeout(() => {
-        window.location.href = "/Insightgram-Web_UI/index.html";
+        window.location.href = "../index.html";
     }, 3000);
 }
 
@@ -248,10 +248,10 @@ async function createPostCard(post, top_or_bottom = "", save = true) {
                     ${post.content.length == 1 ? "" :
             `
                         <div class="slide-arrow  slide-left clickable">
-                                <img src="/Insightgram-Web_UI/Images/arrow-right.png" alt="">
+                                <img src="../Images/arrow-right.png" alt="">
                             </div>
                         <div class="slide-arrow slide-right clickable">
-                            <img src="/Insightgram-Web_UI/Images/arrow-right.png" alt="">
+                            <img src="../Images/arrow-right.png" alt="">
                         </div>
                         `
         }
@@ -340,7 +340,7 @@ async function getPostHead(post) {
     let postOwner = post.postOwnerInfo;
 
     let profilePhotoUrl = postOwner.profilePhoto ? await getUserProfilePhoto(postOwner.userId, jwtToken) :
-        "/Insightgram-Web_UI/Images/no_profile_photo.jpg";
+        "../Images/no_profile_photo.jpg";
     let postTime = getPostTime(post.postDateTime);
 
 
@@ -409,11 +409,11 @@ async function getVideoPostHtml(content) {
         <video loop muted playsinline autoplay>
             <source
                 src="${await getPostContentUrl(content.contentId, jwtToken)}"
-                type="${content.contentType}">
+                type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="video-volume-toggle">
-            <img src="/Insightgram-Web_UI/Images/volume-mute.png" alt="">
+            <img src="../Images/volume-mute.png" alt="">
         </div>
     </div>`;
 
@@ -585,7 +585,7 @@ function addPostCardLogic(postElement, isLiked, post) {
         let postCommentBtn = commentArea.querySelector(".post-new-comment-btn");
 
         postCommentBtn.addEventListener("click", postCommentProcess);
-        newsfeedCommentInputField.addEventListener("keyup", ()=>{
+        newsfeedCommentInputField.addEventListener("keyup", () => {
             let comment = newsfeedCommentInputField.value.trim();
             if (comment != "") {
                 postCommentBtn.style.display = "block";
@@ -632,7 +632,7 @@ function addPostCardLogic(postElement, isLiked, post) {
     }
 }
 function showDetailedPost(post, isLiked) {
-    let detailedPostFrame = `<iframe class="detailed-post-sec" src="/Insightgram-Web_UI/Post-View-Section/post-view-section.html" frameborder="0"></iframe>`;
+    let detailedPostFrame = `<iframe class="detailed-post-sec" src="../Post-View-Section/post-view-section.html" frameborder="0"></iframe>`;
     showOverlayScreen(detailedPostFrame);
     let iframeElm = overlayScreen.querySelector("iframe");
     iframeElm.addEventListener("load", () => {
@@ -656,7 +656,7 @@ function scrollPostCarouselLeft(leftArrow) {
         behavior: "smooth"
     })
 }
-let currentMediaPlaying;
+
 function playVideoIfOnScreen(videoElement) {
 
     videoElement.addEventListener("click", () => {
@@ -677,6 +677,7 @@ function playVideoIfOnScreen(videoElement) {
             videoElement.pause()
         } else {
             if (isElementInViewport(videoElement)) {
+                // playVideo(videoElement);
                 videoElement.play();
                 currentMediaPlaying = videoElement;
             }
@@ -691,38 +692,39 @@ function playVideoIfOnScreen(videoElement) {
         }
     }
 }
+function onVideoLoaded() {
+
+}
 function playVideo(videoElement) {
     let audioIcons = videoElement.parentElement.parentElement.querySelectorAll(".video-volume-toggle img");
     if (muteAudio) {
         videoElement.muted = true;
-        videoElement.play();
-        currentMediaPlaying = videoElement;
         audioIcons.forEach((videoIcon) => {
             videoIcon.setAttribute("src", "../Images/volume-mute.png");
         })
     } else {
         videoElement.muted = false;
-        videoElement.play();
-        currentMediaPlaying = videoElement;
         audioIcons.forEach((videoIcon) => {
             videoIcon.setAttribute("src", "../Images/volume-up-interface-symbol.png");
         })
     }
+    videoElement.play();
+    currentMediaPlaying = videoElement;
 }
 function audioToggle(videoElement) {
     let audioIcons = videoElement.parentElement.parentElement.querySelectorAll(".video-volume-toggle img");
     if (muteAudio) {
         muteAudio = false;
-        playVideo(videoElement);
         audioIcons.forEach((videoIcon) => {
             videoIcon.setAttribute("src", "../Images/volume-up-interface-symbol.png");
         })
+        playVideo(videoElement);
     } else {
         muteAudio = true;
-        playVideo(videoElement);
         audioIcons.forEach((videoIcon) => {
             videoIcon.setAttribute("src", "../Images/volume-mute.png");
         })
+        playVideo(videoElement);
     }
 }
 function isElementInViewport(element) {
@@ -787,8 +789,8 @@ let contentScreen = document.querySelector("#content-screen");
 let newsfeedMessengerBtn = document.querySelector("#newsfeed-messenger-btn");
 
 function showBorderOnNewsfeedOptions(currentBtn) {
-    if(currentBtn == newsfeedSearchSecBtn) return;
-    if(isMobile()) {
+    if (currentBtn == newsfeedSearchSecBtn) return;
+    if (isMobile()) {
         allNewsfeedOptionBtns.forEach((btn) => {
             btn.classList.remove("selected");
         })
@@ -824,7 +826,7 @@ function showSearchSection() {
     showBorderOnNewsfeedOptions(newsfeedSearchSecBtn);
     showNewsfeedOptionsSlideWindow();
 
-    newsfeedOptionsSlideWindow.innerHTML = "<iframe src='/Insightgram-Web_UI/Search-Section/search-section.html' width='100%' height='100%' frameborder='0'></iframe>";
+    newsfeedOptionsSlideWindow.innerHTML = "<iframe src='../Search-Section/search-section.html' width='100%' height='100%' frameborder='0'></iframe>";
 
     newsfeedSearchSecBtn.removeEventListener("click", showSearchSection);
     newsfeedSearchSecBtn.addEventListener("click", hideSearchSection);
@@ -849,7 +851,7 @@ let createPostBtn = document.querySelector("#createNewPostBtn");
 createPostBtn.addEventListener("click", newPostCreationSection);
 
 function newPostCreationSection() {
-    showOverlayScreen(`<iframe src="/Insightgram-Web_UI/Create-Post-Section/create-post-section.html" frameborder="0"></iframe>`);
+    showOverlayScreen(`<iframe src="../Create-Post-Section/create-post-section.html" frameborder="0"></iframe>`);
 }
 function showMyNewPostInNewsfeed(postDto) {
     createPostCard(postDto, "top");
@@ -874,7 +876,7 @@ async function showUserProfileBtnLogic(event) {
 }
 
 function showIFrameOfUserProfile(userId) {
-    let iframeProfile = `<iframe id="my-profile-sec" src="/Insightgram-Web_UI/User-Profile-Section/user-profile-section.html" frameborder="0"></iframe>`
+    let iframeProfile = `<iframe id="my-profile-sec" src="../User-Profile-Section/user-profile-section.html" frameborder="0"></iframe>`
     showContentScreen(iframeProfile);
     let iframeElem = contentScreen.querySelector("iframe")
 
@@ -891,12 +893,13 @@ function showContentScreen(innerHTML) {
     newsfeedContentSec.style.display = "none";
     contentScreen.style.display = "block";
     contentScreen.innerHTML = innerHTML;
-    if(currentMediaPlaying) currentMediaPlaying.pause();
+    if (currentMediaPlaying) currentMediaPlaying.pause();
 }
 function hideContentScreen() {
     contentScreen.style.display = "none";
     contentScreen.innerHTML = null;
     newsfeedContentSec.style.display = "grid";
+    if (currentMediaPlaying) currentMediaPlaying.pause();
 }
 
 
@@ -945,7 +948,7 @@ function showMessengerSection() {
     }
     showBorderOnNewsfeedOptions(newsfeedMessengerBtn);
 
-    let innerFrameHTML = `<iframe src="/Insightgram-Web_UI/Messaging-Section/messaging-section.html" width="100%" height="100%" frameborder="0"></iframe>`
+    let innerFrameHTML = `<iframe src="../Messaging-Section/messaging-section.html" width="100%" height="100%" frameborder="0"></iframe>`
     showContentScreen(innerFrameHTML);
     let iframe = contentScreen.querySelector("iframe");
 
@@ -1067,7 +1070,7 @@ async function getLikeCardHTML(likeDto) {
     if (userId == currentUserDetails.userId) {
         profilePhotoURL = currentUserProfilePhotoURL;
     } else {
-        profilePhotoURL = !liker.profilePhoto ? "/Insightgram-Web_UI/Images/no_profile_photo.jpg" : await getUserProfilePhoto(userId, jwtToken);
+        profilePhotoURL = !liker.profilePhoto ? "../Images/no_profile_photo.jpg" : await getUserProfilePhoto(userId, jwtToken);
     }
 
     let likeCardHtml =
@@ -1170,6 +1173,7 @@ async function showUsersWhoHaveStory() {
         let newStoryIconCard = insertStoryIconCardHTMLToContainer(storyIconCardHTML);
         userBasicInfo.storyIndex = storyIndexingCount;
         newStoryIconCard.addEventListener("click", () => {
+            if (currentMediaPlaying) currentMediaPlaying.pause();
             startStoryViewSection(userBasicInfo, usersWhoHaveStory);
         });
 
@@ -1182,7 +1186,7 @@ async function createStoryIconCardHTML(userBasicInfo, storyIndex) {
     let userId = userBasicInfo.userId;
     let username = userBasicInfo.username;
     let profilePhotoObj = userBasicInfo.profilePhoto;
-    let profilePhotoURL = "/Insightgram-Web_UI/Images/no_profile_photo.jpg";
+    let profilePhotoURL = "../Images/no_profile_photo.jpg";
 
     if (profilePhotoObj) {
         profilePhotoURL = await getUserProfilePhoto(userId, jwtToken);
@@ -1292,6 +1296,9 @@ async function showNewStoryInStorySec(storyDto) {
         let newStoryIconCard = insertStoryIconCardHTMLToContainer(storyIconCardHTML, "afterbegin");
 
         newStoryIconCard.addEventListener("click", () => {
+            if (currentMediaPlaying) {
+                currentMediaPlaying.pause();
+            }
             startStoryViewSection(userBasicInfo, usersWhoHaveStory, true);
         });
     } else {

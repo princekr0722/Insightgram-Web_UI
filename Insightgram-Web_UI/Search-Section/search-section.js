@@ -2,7 +2,7 @@ import {
     searchUsers,
     getUserProfilePhoto,
 
-} from "/Insightgram-Web_UI/src/util.js";
+} from "../src/util.js";
 
 let jwtToken = JSON.parse(localStorage.getItem("insightgramAuthenticationToken"));
 
@@ -57,7 +57,7 @@ async function getSearchedUserCard(userBasicInfo) {
     let userId = userBasicInfo.userId;
     let username = userBasicInfo.username;
     let userFullName = userBasicInfo.userFullName;
-    let profilePhotoUrl = "/Insightgram-Web_UI/Images/no_profile_photo.jpg";
+    let profilePhotoUrl = "../Images/no_profile_photo.jpg";
     if (userBasicInfo.profilePhoto != null) {
         profilePhotoUrl = await getUserProfilePhoto(userId, jwtToken);
     }

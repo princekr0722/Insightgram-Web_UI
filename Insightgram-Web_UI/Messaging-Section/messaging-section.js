@@ -107,7 +107,7 @@ async function createConversationCard(conversation, userBasicInfo) {
     let profilePhoto = userBasicInfo.profilePhoto;
     let userFullName = userBasicInfo.userFullName;
     let username = userBasicInfo.username;
-    let profilePhotoUrl = "/Insightgram-Web_UI/Images/no_profile_photo.jpg";
+    let profilePhotoUrl = "../Images/no_profile_photo.jpg";
 
     let lastMessageTime = conversation.time;
     let lastMessage = conversation.message;

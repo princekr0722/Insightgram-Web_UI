@@ -388,8 +388,8 @@ function showOverlayChangeDpWindow() {
     }
 }
 
-function changeEveryDpInPage(newDpURL = "/Insightgram-Web_UI/Images/no_profile_photo.jpg") {
-    currentUser.profilePhoto = newDpURL == "/Insightgram-Web_UI/Images/no_profile_photo.jpg" ? null : newDpURL;
+function changeEveryDpInPage(newDpURL = "../Images/no_profile_photo.jpg") {
+    currentUser.profilePhoto = newDpURL == "../Images/no_profile_photo.jpg" ? null : newDpURL;
     localStorage.setItem("insightgramUserDetails", JSON.stringify(currentUser));
     currentUserProfilePhoto = newDpURL;
     let allDp = document.querySelectorAll(".user_profile_photo");
@@ -446,9 +446,9 @@ function hidePrivateAccMsg() {
     if (privateAccMsg != null) privateAccMsg.remove();
 }
 async function getPostCard(postDto) {
-    let thumbnailURL = "/Insightgram-Web_UI/Images/default_thumbnail.png";
+    let thumbnailURL = "../Images/default_thumbnail.png";
     if (postDto.content[0].contentType.split("/")[0] == "video") {
-        thumbnailURL = "/Insightgram-Web_UI/Images/default_video_thumbnail.png";
+        thumbnailURL = "../Images/default_video_thumbnail.png";
     } else {
         thumbnailURL = await getPostContentUrl(postDto.content[0].contentId, jwtToken);
     }

@@ -3,7 +3,7 @@ import {
     createPost,
     createStory,
 
-} from "/Insightgram-Web_UI/src/util.js";
+} from "../src/util.js";
 
 let jwtToken = JSON.parse(localStorage.getItem("insightgramAuthenticationToken"));
 
@@ -217,7 +217,7 @@ async function showCaptionArea() {
 
     let profilePhotoUrl;
     if (currentUserDetails == null || currentUserDetails.profilePhoto == null) {
-        profilePhotoUrl = "/Insightgram-Web_UI/Images/no_profile_photo.jpg";
+        profilePhotoUrl = "../Images/no_profile_photo.jpg";
     } else {
         profilePhotoUrl = await getUserProfilePhoto(currentUserDetails.userId, jwtToken);
     }

@@ -21,7 +21,7 @@ import {
 // GLOBAL VALUES
 let jwtToken = JSON.parse(localStorage.getItem("insightgramAuthenticationToken"));
 let currentUserDetails = JSON.parse(localStorage.getItem("insightgramUserDetails"));
-let currentUserProfilePhotoURL = JSON.parse(localStorage.getItem("currentUserProfilePhotoURL")) || "/Insightgram-Web_UI/Images/no_profile_photo.jpg";
+let currentUserProfilePhotoURL = JSON.parse(localStorage.getItem("currentUserProfilePhotoURL")) || "../Images/no_profile_photo.jpg";
 let post;
 let isLiked;
 let postContentsURL = [];
@@ -236,11 +236,11 @@ function loadAboutPost() {
 async function createCommentCardHTML(basicUserInfo, userComment) {
     let userId = basicUserInfo.userId;
     let postId = userComment.postId;
-    let profilePhotoURL = "/Insightgram-Web_UI/Images/no_profile_photo.jpg";
+    let profilePhotoURL = "../Images/no_profile_photo.jpg";
     if (currentUserDetails.userId == userId) {
         profilePhotoURL = currentUserProfilePhotoURL;
     } else {
-        profilePhotoURL = basicUserInfo.profilePhoto == null ? "/Insightgram-Web_UI/Images/no_profile_photo.jpg" : await getUserProfilePhoto(userId, jwtToken);
+        profilePhotoURL = basicUserInfo.profilePhoto == null ? "../Images/no_profile_photo.jpg" : await getUserProfilePhoto(userId, jwtToken);
     }
     let username = basicUserInfo.username;
     let commentId = userComment.commentId;
@@ -346,13 +346,13 @@ function playVideoIfOnScreen(videoElement) {
             videoElement.muted = false;
             mute = 0;
             audioIcons.forEach((audioIcon) => {
-                audioIcon.src = "/Insightgram-Web_UI/Images/volume-up-interface-symbol.png";
+                audioIcon.src = "../Images/volume-up-interface-symbol.png";
             })
         } else {
             videoElement.muted = true;
             mute = 1;
             audioIcons.forEach((audioIcon) => {
-                audioIcon.src = "/Insightgram-Web_UI/Images/volume-mute.png";
+                audioIcon.src = "../Images/volume-mute.png";
             })
         }
     }
@@ -379,7 +379,7 @@ async function getImagePost(contentId) {
 async function getVideoPost(contentId) {
     let url = await getPostContentUrl(contentId, jwtToken);
     postContentsURL.push(url);
-    let imgContent =
+    let videoContent =
         `<div class="post-content post-content-video">
         <video loop muted playsinline autoplay>
             <source
@@ -393,7 +393,7 @@ async function getVideoPost(contentId) {
         </div>
     </div>`;
 
-    return imgContent;
+    return videoContent;
 }
 
 // Load Comments
@@ -604,7 +604,7 @@ async function getLikeCardHTML(likeDto) {
     if (userId == currentUserDetails.userId) {
         profilePhotoURL = currentUserProfilePhotoURL;
     } else {
-        profilePhotoURL = !liker.profilePhoto ? "/Insightgram-Web_UI/Images/no_profile_photo.jpg" : await getUserProfilePhoto(userId, jwtToken);
+        profilePhotoURL = !liker.profilePhoto ? "../Images/no_profile_photo.jpg" : await getUserProfilePhoto(userId, jwtToken);
     }
 
     let likeCardHtml =
