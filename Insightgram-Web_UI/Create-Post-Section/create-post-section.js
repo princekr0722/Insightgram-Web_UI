@@ -287,6 +287,9 @@ function showBackAndPostBtn(allFiles) {
     backBtn.addEventListener("click", addBackBtnLogic);
     if (newPostType == "PHOTO_OR_VIDEO" || newPostType == "REEL") {
         addPostBtnLogic = async () => {
+            postBtn.removeEventListener("click", addPostBtnLogic);
+            postBtn.innerHTML = "posting...";
+
             let postType = newPostType;
             let caption = document.querySelector("#caption-field").value;
 
@@ -296,13 +299,18 @@ function showBackAndPostBtn(allFiles) {
                 // Send a message to the parent
                 parentWindow.postMessage(["showMyNewPostInNewsfeed", postDto]);
             }
+            postBtn.addEventListener("click", addPostBtnLogic);
         }
     } else {
         addPostBtnLogic = async () => {
+            postBtn.removeEventListener("click", addPostBtnLogic);
+            postBtn.innerHTML = "posting...";
+
             let storyDto = await createStory(allFiles[0], jwtToken);
             if (storyDto) {
                 parentWindow.postMessage(["showNewStoryInStorySec", storyDto]);
             }
+            postBtn.addEventListener("click", addPostBtnLogic);
         }
     }
     postBtn.addEventListener("click", addPostBtnLogic);
