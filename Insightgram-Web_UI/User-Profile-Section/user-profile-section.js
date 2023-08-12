@@ -358,6 +358,7 @@ function showOverlayChangeDpWindow() {
             }
             if (newDpURL) {
                 changeEveryDpInPage(newDpURL);
+                localStorage.setItem("currentUserProfilePhotoURL", JSON.stringify(newDpURL))
                 closeUploadProfileWindow();
             } else {
             }
