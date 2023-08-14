@@ -45,7 +45,7 @@ Entire Insightgram is build by me in a span of 2 months (not continuously).
 
 Thank you for taking the time to explore Insightgram Web UI. Your feedback and engagement are greatly appreciated. Feel free to reach out to me with any questions or suggestions – I'm excited to continue refining and expanding this project. Here's to a brighter, more connected digital world with Insightgram!
 
-Deployed app link: [https://classy-sherbet-63a565.netlify.app](https://classy-sherbet-63a565.netlify.app)
+Deployed app link: [https://insightgram.netlify.app/](https://insightgram.netlify.app/)
 
 Happy coding!
 
