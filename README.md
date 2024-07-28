@@ -29,7 +29,7 @@ Access `http://localhost:PORT_NUMBER/swagger-ui/index.html#/` to explore the API
 
 ![Insightgram_Microservices_Architecture_Diagram](https://github.com/princekr0722/Insightgram-Web_UI/assets/112754559/6da6559e-b146-4e2d-bc07-b29536f3468d)
 
-## All Services
+## 🗂️ All Services
 
 - Main Service: https://github.com/princekr0722/Insightgram_Main_Backend_Service
 - Messaging Service: https://github.com/princekr0722/Insightgram_Messaging_Service
@@ -39,7 +39,7 @@ Access `http://localhost:PORT_NUMBER/swagger-ui/index.html#/` to explore the API
 
 ## 🗃️ Tech Stack
 
-- `JavaScript`, `HTML`, and `CSS`: The driving force behind our dynamic and visually appealing user interface, delivering a seamless and interactive experience.
+- `Vanilla JavaScript`, `HTML`, and `CSS`: The driving force behind our dynamic and visually appealing user interface, delivering a seamless and interactive experience.
 - `Netlify`: Empowering our deployment strategy with effortless continuous integration and hosting, ensuring a swift and efficient user experience.
 
 With these technologies, Insightgram Web UI is equipped to provide you with a secure, engaging, and user-friendly platform that reflects our commitment to excellence.
