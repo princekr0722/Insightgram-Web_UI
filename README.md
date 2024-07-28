@@ -29,6 +29,13 @@ Access `http://localhost:PORT_NUMBER/swagger-ui/index.html#/` to explore the API
 
 ![Insightgram_Microservices_Architecture_Diagram](https://github.com/princekr0722/Insightgram-Web_UI/assets/112754559/6da6559e-b146-4e2d-bc07-b29536f3468d)
 
+## All Services
+
+Main Service: https://github.com/princekr0722/Insightgram_Main_Backend_Service
+Messaging Service: https://github.com/princekr0722/Insightgram_Messaging_Service
+Service Regstry: https://github.com/princekr0722/Insightgram-Service-Registry
+API Gateway: https://github.com/princekr0722/Insightgram_API_Gateway
+Main Web UI: https://github.com/princekr0722/Insightgram-Web_UI
 
 ## 🗃️ Tech Stack
 
